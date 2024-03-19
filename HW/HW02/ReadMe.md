@@ -15,8 +15,8 @@
 
 Remote Repository를 생성하려면 Github 웹사이트에 접속하여 로그인을 하고
 화면 오른쪽상단에 +버튼을 클릭해 "New repository"를 선택 Repository 이름을 입력하고 옵션을 설정한 뒤 "Create repository"를 클릭해 remote repository를 생성합니다.
-자세한 설명은 img 파일에 해놨습니다.
- *IMG 파일로 설명하겠습니다.
+git init를 써줘서 git을 초기화
+
 
  4.4. .gitignore 사용법과 작성방식 및 내용에 대해서 조사를 해 오시오. (이클래스에 있는 Visual Studio 2022 C++ 프로젝트용 ignore도 git에 업로드 해주세요.)
  gitignore 파일은 git이 추적하지 않아야 하는 파일 및 디렉토리를 지정하는데 사용됩니다. 개인 설정파일 컴파일된 바이너리파일 로그 파일 등을 git저장소에 제외 할 수 있습니다. 
