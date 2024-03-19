@@ -13,7 +13,8 @@ git config -- global user.name"Chovy10"
 git branch -M main으로 브랜치 이름을 main으로 정해줬습니다.
 git remote add origin https://github.com/Chovy10/Example1/.git 명령어를 이용해 로컬 브랜치 github 리모트 브런치에 추가해줬습니다.
 git push -u origin main을 이용해 push를 해줬습니다.
-그러면
+![과제4](https://github.com/Chovy10/Chovy/assets/162932915/fa155744-b7df-4391-90bc-836d00fb09fb)
+사진처럼 이렇게 뜨는데 sign in with your browser선택해 인증을 진행했습니다.
 
 
 
