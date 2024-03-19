@@ -16,6 +16,9 @@
 Remote Repository를 생성하려면 Github 웹사이트에 접속하여 로그인을 하고
 화면 오른쪽상단에 +버튼을 클릭해 "New repository"를 선택 Repository 이름을 입력하고 옵션을 설정한 뒤 "Create repository"를 클릭해 remote repository를 생성합니다.
 git init를 써줘서 git을 초기화
+echo "# TempRepository">> READMe.md 명령어를 사용해 프로젝트를 설명하는 README.md를 만들어줬습니다 그다음 git add README.md를 써 git에 README.md파일을 추가했습니다 git commit -m "first commit" 명령어로 파일을 추가한것을 확정해줬습니다. git에 commit을 하기위해 작성자를 인식해야 하는데 사용자 정보를 등록해줬습니다. git config --global user.email"sdh042829@gmail.com" git config -- global user.name"Chovy10"
+
+git branch -M main으로 브랜치 이름을 main으로 정해줬습니다. git remote add origin https://github.com/Chovy10/Example1/.git 명령어를 이용해 로컬 브랜치 github 리모트 브런치에 추가해줬습니다. git push -u origin main을 이용해 push를 해줬습니다.
 
 
  4.4. .gitignore 사용법과 작성방식 및 내용에 대해서 조사를 해 오시오. (이클래스에 있는 Visual Studio 2022 C++ 프로젝트용 ignore도 git에 업로드 해주세요.)
