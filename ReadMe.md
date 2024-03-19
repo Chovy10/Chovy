@@ -6,7 +6,7 @@
  * 학번:202127009
  * 이름:신도훈
 
- * Version:
+ * Version:17.6
 
  * IDE: Visual Studio 2022
  * Compiler:
