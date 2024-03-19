@@ -16,8 +16,6 @@
 Remote Repository를 생성하려면 Github 웹사이트에 접속하여 로그인을 하고
 화면 오른쪽상단에 +버튼을 클릭해 "New repository"를 선택 Repository 이름을 입력하고 옵션을 설정한 뒤 "Create repository"를 클릭해 remote repository를 생성합니다.
  *IMG 파일로 설명하겠습니다.
- (https://github.com/Chovy10/Chovy/assets/162932915/d41424bc-b93b-43ea-b355-8e0bde44a370)
-
  
 
 
