@@ -1,4 +1,6 @@
 GIT을 이용하여 remote repository를 생성하고 git용 bash 로 새로 initialize한 local repository랑 연결하는 과정을 스크린샷과 함께 각 명령어의 자세한 설명을 작성하시오. 이때 브랜치명은 main으로 합니다
+![과제2](https://github.com/Chovy10/Chovy/assets/162932915/ebe02f54-78d5-4603-b9d1-68e879f1a5b9)
+Github 레지스토리를 만들어줬습니다.
 
 ![과제1](https://github.com/Chovy10/Chovy/assets/162932915/d41424bc-b93b-43ea-b355-8e0bde44a370)
 D드라이브에 Example 폴더의 Example폴더로 이동해줍니다. 
