@@ -18,6 +18,8 @@ git push -u origin main을 이용해 push를 해줬습니다.
 사진처럼 이렇게 뜨는데 sign in with your browser선택해 인증을 진행했습니다.
 ![캡쳐5](https://github.com/Chovy10/Chovy/assets/162932915/c6bcf92b-b22f-488b-b9f6-c390df385e66)
 사진처럼 push가 성공적으로 진행됐습니다.
+![캡쳐6](https://github.com/Chovy10/Chovy/assets/162932915/96314731-508c-4a0e-80aa-fa924142e4a9)
+깃허브에 들어가서 README.md 파일 PUSH가 적용됐습니다.
 
 
 
