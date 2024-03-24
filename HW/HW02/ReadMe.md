@@ -1,58 +1,15 @@
-1. VCS란 무엇인가
-   * 버전관리 시스템(VCS, Version Control System) 파일 변화를 시간에 따라 기록하고 나중에 특정 시점의 버전을 다시 불러올 수 있는 시스템입니다.
-   * VSC를 사용해서 선택한 파일을 이전 상태로 되돌릴 수 있고, 변경사항을 비교, 변경한 사람 및 변경 시기를 추적할 수 있습니다. 파일을 잃어버렸을때 잘못 고쳤을때 쉽게 복구가 가능합니다.
-   * VCS의 종류에는 Local Vcs, RCS(Revision Control System), CVCS(Cenmtralized VCS), DVCS(Distributed VCS)가 있습니다.
-  
-2.DVCS와 VCS의 차이점
- DVCS와 VCS의 차이는 데이터의 저장과 관리방식으로 나뉘는데
-  * VCS는 중앙 서버에 저장소(repository)를 두고 사용자는 중앙 서버에 파일을 가져와 작업하고 변경 내용을 중앙 서버에 반영을 하지만 DVCS는 중앙 서버와 별도로 로컬 저장소를 각 개발자의 컴퓨터에 복제합니다. 개발자는 로컬 저장소에서 작업을 수행하고 필요에 따라 중앙 서버에 변경 사항을 동기화가 가능합니다
-  * VCS는 인터넷이 연결되어야 중앙서버에서 파일을 가져와 작업을 할 수 있고 네트워크가 끊기면 작업이 불가능합니다. DVCS는 로컬 저장소가 있기때문에 네트워크가 끊겨도 작업이 됩니다.
-  * DVCS는 분산 구조기때문에 각각의 개발자가 독립적으로 작업을 수행을 할 수 있습니다. 동시에 서로 다른 작업을 하고 있을때도 충돌을 줄일 수 있고 VCS는 중앙 집중형 구조기때문에 여러 명이 동시에 중앙 서버에 접근해 작업을 할 경우 충돌이 발생합니다
-  * DVCS는 개발자의 로컬저장소와 중앙 서버 모두에 프로젝트의 전체 히스토리가 저장되기때문에 데이터가 중앙 서버에 손실되더라도 로컬 저장소에 복구가 되지만 VCS는 중앙 서버에 프로젝트 히스토리가 저장되므로 중앙서버에 문제가 생기면 데이터 손실이 생깁니다.
-  * DVCS는 협업 환경에 유연하고 안전한 작업을 할 수 있습니다. Git이 DVCS의 예시라 할 수 있습니다.
-
-3.3. GIT을 이용하여 remote repository를 생성하고 git용 bash 로 새로 initialize한 local repository랑 연결하는 과정을 스크린샷과 함께 각 명령어의 자세한 설명을 작성하시오. 이때 브랜치명은 main으로 합니다.
-
-Remote Repository를 생성하려면 Github 웹사이트에 접속하여 로그인을 하고
-화면 오른쪽상단에 +버튼을 클릭해 "New repository"를 선택 Repository 이름을 입력하고 옵션을 설정한 뒤 "Create repository"를 클릭해 remote repository를 생성합니다.
-git init를 써줘서 git을 초기화
-echo "# TempRepository">> READMe.md 명령어를 사용해 프로젝트를 설명하는 README.md를 만들어줬습니다 그다음 git add README.md를 써 git에 README.md파일을 추가했습니다 git commit -m "first commit" 명령어로 파일을 추가한것을 확정해줬습니다. git에 commit을 하기위해 작성자를 인식해야 하는데 사용자 정보를 등록해줬습니다. git config --global user.email"sdh042829@gmail.com" git config -- global user.name"Chovy10"
-
-git branch -M main으로 브랜치 이름을 main으로 정해줬습니다. git remote add origin https://github.com/Chovy10/Example1/.git 명령어를 이용해 로컬 브랜치 github 리모트 브런치에 추가해줬습니다. git push -u origin main을 이용해 push를 해줬습니다.
 
 
- 4.4. .gitignore 사용법과 작성방식 및 내용에 대해서 조사를 해 오시오. (이클래스에 있는 Visual Studio 2022 C++ 프로젝트용 ignore도 git에 업로드 해주세요.)
- gitignore 파일은 git이 추적하지 않아야 하는 파일 및 디렉토리를 지정하는데 사용됩니다. 개인 설정파일 컴파일된 바이너리파일 로그 파일 등을 git저장소에 제외 할 수 있습니다. 
- gitignore 파일은 간단한 텍스트 파일로 작성되는데 파일 이름은 .gitignore로 하며 각 줄에는 git이 무시해야 하는 파일이나 디렉토리의 패턴을 작성합니다. 작성된 패턴에 해당하는 파일, 디렉토리는 git에 의해 추적이 안됩니다
- gitignore 파일 작성 방식은
- filenae.txt:특정파일 무시
- *.log:특정 확장자 가진 파일 무시
- directory/:특정 디렉토리 무시
- temp*.txt:특정 패턴 가진 파일 무시
- !<를 사용해서 특정 파일 및 디렉토리를 무시하지 않도록 설정이 가능합니다.
+ 유한대학교프로그래밍패턴24-1
+ * 사용자정보
 
- 5. ReadMe.md 파일에 사용된 Mark Down 표기법 에대해서 헤더/목록(숫자)/순서없는목록(ex>*) / 들여쓰기 / 코드블럭 / 수평선 /링크 / 이미지/ 강조 에 대해 사용 방법을 정리해 오시오.
-MarkDown은 간단한 마크업 언어로 READMe.md와 같은 문서를 작성하는데 사용됩니다.
-Header:#은 제목의 수준입니다.
-목록(List):숫자 목록을 만들때는 숫자와 점을 사용합니다.
-순서 없는 목록은 *를 사용해줍니다.
-들여쓰기:공백(Space), 탭(tab)을 사용합니다.
-코드블럭:백틱(backtick)기호를 사용합니다.
-수평선:세 개 이상의 하이픈(-),별표(*),언더바(_)사용합니다.
-링크:괄호 안에 링크 주소(URL)이 들어가고, 대괄호 안에 링크 텍스트가 들어갑니다.
-이미지:대체 텍스트 이미지가 로드되지 못할때 대체할 텍스트를 의미합니다.
-강조:*또는 '_'를 사용해 이탤릭체를 나타내고, **, '__'를 사용해 굵은체를 나타냅니다.
+ * 학번:202127009
+ * 이름:신도훈
 
+ * Version:
 
-
- 
-
-
-
- 
-
-
-
-
- 
+ * IDE: Visual Studio 2022
+ * Compiler:
+  * Packages
+  * OpenGL
 
