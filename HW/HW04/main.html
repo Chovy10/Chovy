@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmongUs</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+        .digit-container {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: rgb(62, 32, 233);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            display: inline-block;
+        }
+
+        .digit {
+            position: relative;
+            width: 10px;
+            height: 20px;
+            margin-right: 2px;
+            background-color: white;
+        }
+
+        .segment {
+            position: absolute;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="GameScreenCanvas" width="1024" height="600">이 브라우저에서는 canvas를 지원하지 않아요!</canvas>
+    <div id="studentID" class="digit-container"></div> 
+    <script>
+        function displayNumber(elementId, number) {
+            var element = document.getElementById(elementId);
+            element.innerHTML = '';
+
+            const digitSegments = [
+                [1, 1, 1, 1, 1, 1, 0], // 0
+                [0, 1, 1, 0, 0, 0, 0], // 1
+                [1, 1, 0, 1, 1, 0, 1], // 2
+                [1, 1, 1, 1, 0, 0, 1], // 3
+                [0, 1, 1, 0, 0, 1, 1], // 4
+                [1, 0, 1, 1, 0, 1, 1], // 5
+                [1, 0, 1, 1, 1, 1, 1], // 6
+                [1, 1, 1, 0, 0, 0, 0], // 7
+                [1, 1, 1, 1, 1, 1, 1], // 8
+                [1, 1, 1, 1, 0, 1, 1]  // 9
+            ];
+
+            // 각 숫자를 디지털 스타일로 그림
+            for (let i = 0; i < number.length; i++) {
+                const digit = parseInt(number[i]);
+                const segments = digitSegments[digit];
+
+                // 숫자를 표시할 요소 생성
+                const digitElement = document.createElement('div');
+                digitElement.className = 'digit';
+                element.appendChild(digitElement);
+
+                // 각 세그먼트를 디지털 스타일로 그림
+                if (segments[0]) drawSegment(digitElement, 'segment', 0, 0, 10, 2); 
+                if (segments[1]) drawSegment(digitElement, 'segment', 8, 2, 2, 8); 
+                if (segments[2]) drawSegment(digitElement, 'segment', 8, 12, 2, 8); 
+                if (segments[3]) drawSegment(digitElement, 'segment', 0, 20, 10, 2); 
+                if (segments[4]) drawSegment(digitElement, 'segment', -2, 12, 2, 8); 
+                if (segments[5]) drawSegment(digitElement, 'segment', -2, 2, 2, 8); 
+                if (segments[6]) drawSegment(digitElement, 'segment', 0, 10, 10, 2); 
+            }
+        }
+
+        function drawSegment(parentElement, className, x, y, width, height) {
+            const segment = document.createElement('div');
+            segment.className = className;
+            segment.style.position = 'absolute';
+            segment.style.top = y + 'px';
+            segment.style.left = x + 'px';
+            segment.style.width = width + 'px';
+            segment.style.height = height + 'px';
+            parentElement.appendChild(segment);
+        }
+
+        var studentID = prompt("학번을 입력하세요:");
+        displayNumber('studentID', studentID);
+    </script>
+</body>
+</html>
