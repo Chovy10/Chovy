@@ -32,20 +32,96 @@
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
 
-            // 캔버스의 좌표계를 설정
+            // 캔버스의 너비와 높이
             var canvasWidth = canvas.width;
             var canvasHeight = canvas.height;
             var canvasCenterX = canvasWidth / 2;
             var canvasCenterY = canvasHeight / 2;
 
             // 별 그리기
-            ctx.fillStyle = "rgb(255, 255, 0)"; // 빨간색
-            drawStar(ctx, canvasCenterX, canvasCenterY, 50, 5, 0.5);
+            drawStar(ctx, canvasCenterX, canvasCenterY, 50, 5);
 
-            // 하트 그리기
-            drawHeart(ctx, getRandomInt(canvasWidth), getRandomInt(canvasHeight));
+            // 적 생성 및 배열
+            var enemies = [];
+
+            // 초당 5~15개의 적 생성
+            setInterval(function() {
+                var numEnemies = Math.floor(Math.random() * 10) + 5;
+                for (var i = 0; i < numEnemies; i++) {
+                    createEnemy();
+                }
+            }, 1000);
+
+            // 적 생성 함수
+            function createEnemy() {
+                // 적의 초기 위치를 랜덤하게 설정
+                var side = Math.floor(Math.random() * 4); // 0: 위, 1: 오른쪽, 2: 아래, 3: 왼쪽
+                var x, y;
+                if (side === 0) { // 위쪽
+                    x = Math.random() * canvasWidth;
+                    y = -20; // 캔버스 위쪽에서 20px 뒤에서 생성
+                } else if (side === 1) { // 오른쪽
+                    x = canvasWidth + 20; // 캔버스 오른쪽에서 20px 뒤에서 생성
+                    y = Math.random() * canvasHeight;
+                } else if (side === 2) { // 아래쪽
+                    x = Math.random() * canvasWidth;
+                    y = canvasHeight + 20; // 캔버스 아래쪽에서 20px 뒤에서 생성
+                } else { // 왼쪽
+                    x = -20; // 캔버스 왼쪽에서 20px 뒤에서 생성
+                    y = Math.random() * canvasHeight;
+                }
+                
+                var enemy = {
+                    x: x,
+                    y: y,
+                    radius: Math.random() * 20 + 10, // 반지름 범위: 10 ~ 30
+                    color: 'rgb(0, 0, 0)', // 빨간색
+                    speed: Math.random() * 1 + 1, // 속도 범위: 1 ~ 4
+                    draw: function() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                        ctx.closePath();
+                    },
+                    update: function() {
+                        // 플레이어 쪽으로 이동
+                        var dx = canvasCenterX - this.x;
+                        var dy = canvasCenterY - this.y;
+                        var angle = Math.atan2(dy, dx);
+                        var vx = Math.cos(angle) * this.speed;
+                        var vy = Math.sin(angle) * this.speed;
+                        this.x += vx;
+                        this.y += vy;
+                    }
+                };
+                enemies.push(enemy);
+            }
+
+            // 게임 루프
+            function gameLoop() {
+                // 캔버스 지우기
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+                // 별 그리기
+                drawStar(ctx, canvasCenterX, canvasCenterY, 50, 5);
+
+                // 적 그리기 및 업데이트
+                for (var i = 0; i < enemies.length; i++) {
+                    var enemy = enemies[i];
+                    enemy.draw();
+                    enemy.update();
+                }
+
+                // 다음 프레임 요청
+                requestAnimationFrame(gameLoop);
+            }
+
+            // 게임 시작
+            gameLoop();
         };
 
+        // 별 그리기 함수
         function drawStar(ctx, cx, cy, radius, spikes) {
             var rot = (Math.PI / 2) * 3;
             var x = cx;
@@ -60,8 +136,8 @@
                 ctx.lineTo(x, y);
                 rot += step;
 
-                x = cx + Math.cos(rot) * (radius / 2);
-                y = cy + Math.sin(rot) * (radius / 2);
+                x = cx + Math.cos(rot) * (radius / 3);
+                y = cy + Math.sin(rot) * (radius / 3);
                 ctx.lineTo(x, y);
                 rot += step;
             }
@@ -72,53 +148,6 @@
             ctx.fillStyle = 'rgb(255, 255, 0)';
             ctx.fill();
         }
-
-
-
-
-
-   
-        
-
-        // 하트 그리기 함수
-        function drawHeart(ctx, cx, cy) {
-            var x = 0;
-            var y = 0;
-            var scale = 10;
-
-            ctx.beginPath();
-            ctx.moveTo(cx + x * scale, cy + y * scale);
-            for (var theta = 0; theta <= 2 * Math.PI; theta += 0.01) {
-                x = 16 * Math.pow(Math.sin(theta), 3);
-                y = 13 * Math.cos(theta) - 5 * Math.cos(2 * theta) - 2 * Math.cos(3 * theta) - Math.cos(4 * theta);
-                ctx.lineTo(cx + x * scale, cy - y * scale);
-            }
-            ctx.closePath();
-            ctx.fillStyle = 'rgb(255, 0, 0)';
-            ctx.fill();
-        }
-
-
-
-       ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.bezierCurveTo(x, y + 20, x - 40, y + 20, x - 40, y);
-            ctx.bezierCurveTo(x - 40, y - 40, x, y - 80, x, y - 80);
-            ctx.bezierCurveTo(x, y - 80, x + 40, y - 40, x + 40, y);
-            ctx.bezierCurveTo(x + 40, y + 20, x, y + 20, x, y);
-            ctx.fillStyle = 'rgb(255, 0, 255)';
-            ctx.fill();
-            ctx.closePath();
-        
-
-        // 랜덤 정수 반환 함수
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
     </script>
 </body>
 </html>
-
-    
-
-    
